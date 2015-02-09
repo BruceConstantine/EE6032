@@ -34,21 +34,44 @@ Make sure all group members are cc on the email to me.
 Only one email submission per group.
 
 Look at the marking scheme below to see how the 40% will be distributed.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
 Marking Scheme
 Total marks awarded are 40%, divided as follows:
 1. Week 5 Grading in Lab.
@@ -72,24 +95,3 @@ Total marks awarded are 40%, divided as follows:
 		a. The better the method used here the more marks you will be awarded. 
 		For example the use of email to simply email the key and encrypted files/strings will be awarded at most 3%. 
 		Sockets or similar methods will be capable of being awarded the full 10
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
