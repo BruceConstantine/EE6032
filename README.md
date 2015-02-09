@@ -72,6 +72,13 @@ Look at the marking scheme below to see how the 40% will be distributed.
 ⇩
 ⇩
 ⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
+⇩
 Marking Scheme
 Total marks awarded are 40%, divided as follows:
 1. Week 5 Grading in Lab.
