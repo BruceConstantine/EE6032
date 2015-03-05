@@ -255,6 +255,75 @@ void RSA(void)
 	printf("%s\n", decryptedStr);
 }
 
+void digitalSig(void)
+{
+	CkRsa rsa;
+
+	bool success;
+	success = rsa.UnlockComponent("T12302015RSA_nn56BzHGIRMg");
+	if (success != true) {
+		printf("RSA component unlock failed\n");
+		return;
+	}
+
+	// this code operates the same as the above RSA but swaps the use of the private key and public key
+	// a little more work will have to be done to split this function into signing the message and
+	// validate the message afterwards
+	success = rsa.GenerateKey(1024);  
+	if (success != true) {
+		printf("%s\n", rsa.lastErrorText());
+		return;
+	}
+
+	//  Also this could work with the keys that are created at startup so most of the code below is 
+	// pretty redundant!
+	const char * publicKey;
+	publicKey = rsa.exportPublicKey();
+	std::cout << "RSA Public Key:" << "\r\n";
+	std::cout << publicKey << "\r\n\n";
+	const char * privateKey;
+	privateKey = rsa.exportPrivateKey();
+	std::cout << "RSA Private Key:" << "\r\n";
+	std::cout << privateKey << "\r\n\n";
+
+	// Store the 2 keys at this point for later use.
+
+	const char * plainText;
+	plainText = "Check out my digital signature!";
+
+	//  everything below this point can be the same since we still need the encryptor/decryptor object
+	// but still need to be split up!
+	CkRsa rsaEncryptor;
+
+	//  Encrypted output is always binary.  In this case, we want
+	//  to encode the encrypted bytes in a printable string.
+	//  Our choices are "hex", "base64", "url", "quoted-printable".
+	rsaEncryptor.put_EncodingMode("hex");
+
+	//  We'll encrypt with the public key and decrypt with the private
+	//  key.  It's also possible to do the reverse.
+	rsaEncryptor.ImportPublicKey(publicKey);
+
+	// this boolean is a GODSEND
+	bool usePrivateKey;
+	usePrivateKey = true;
+	const char * encryptedStr;
+	encryptedStr = rsaEncryptor.encryptStringENC(plainText, usePrivateKey);
+	printf("%s\n", encryptedStr);
+
+	//  Now decrypt:
+	CkRsa rsaDecryptor;
+
+	rsaDecryptor.put_EncodingMode("hex");
+	rsaDecryptor.ImportPrivateKey(privateKey);
+
+	usePrivateKey = false;
+	const char * decryptedStr;
+	decryptedStr = rsaDecryptor.decryptStringENC(encryptedStr, usePrivateKey);
+
+	printf("%s\n", decryptedStr);
+}
+
 void AES(void)
 {
 	CkCrypt2 crypt;
